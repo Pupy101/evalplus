@@ -490,7 +490,8 @@ def script(
                     "min_correct": min_correct,
                     "max_profile": max_profile,
                     "eval": eval_results,
-                }
+                },
+                ensure_ascii=False,
             )
         )
     rich.print(f"Full results have been saved to {result_path}")
@@ -528,7 +529,8 @@ def script(
                         }
                         for task_id, res in eval_results.items()
                     },
-                }
+                },
+                ensure_ascii=False,
             )
         )
 

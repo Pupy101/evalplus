@@ -60,7 +60,9 @@ def input_generation(args, problems):
             if input_gen is None or len(input_gen) == 0:
                 new_input["task_id"] = task_id
                 new_input["inputs"] = {}
-                file.write(json.dumps(new_input, cls=SetEncoder) + "\n")
+                file.write(
+                    json.dumps(new_input, cls=SetEncoder, ensure_ascii=False) + "\n"
+                )
                 continue
 
             input_gen.extend(
@@ -73,7 +75,7 @@ def input_generation(args, problems):
             if args.dataset == "mbpp":
                 new_input["inputs"] = mbpp_serialize_inputs(task_id, input_gen)
             new_input["inputs"] = input_gen
-            file.write(json.dumps(new_input, cls=SetEncoder) + "\n")
+            file.write(json.dumps(new_input, cls=SetEncoder, ensure_ascii=False) + "\n")
 
 
 def main():

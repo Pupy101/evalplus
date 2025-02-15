@@ -283,7 +283,7 @@ def main():
     else:
         with open(f"MbppPlus-OriginFmt-{MBPP_PLUS_VERSION}.jsonl", "w") as f:
             for problem in compatible_problems.values():
-                f.write(json.dumps(problem) + "\n")
+                f.write(json.dumps(problem, ensure_ascii=False) + "\n")
 
 
 if __name__ == "__main__":

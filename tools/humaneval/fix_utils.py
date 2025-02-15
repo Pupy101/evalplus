@@ -13,7 +13,7 @@ def evolve(src_file: str, tgt_file: str, fix: Callable):
     data = fix(data)
     with open(tgt_file, "wb") as f:
         for x in data:
-            f.write((json.dumps(x) + "\n").encode("utf-8"))
+            f.write((json.dumps(x, ensure_ascii=False) + "\n").encode("utf-8"))
 
 
 def replay_contract(data: dict, tid: int) -> dict:

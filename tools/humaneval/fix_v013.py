@@ -26,7 +26,7 @@ if __name__ == "__main__":
     data = fix(data)
     with open("HumanEvalPlus-v0.1.4.jsonl", "wb") as f:
         for x in data:
-            f.write((json.dumps(x) + "\n").encode("utf-8"))
+            f.write((json.dumps(x, ensure_ascii=False) + "\n").encode("utf-8"))
 
     with open("HumanEvalPlus-Mini-v0.1.3.jsonl") as f:
         data = [json.loads(line) for line in f.readlines() if line]
@@ -34,4 +34,4 @@ if __name__ == "__main__":
     data = fix(data)
     with open("HumanEvalPlus-Mini-v0.1.4.jsonl", "wb") as f:
         for x in data:
-            f.write((json.dumps(x) + "\n").encode("utf-8"))
+            f.write((json.dumps(x, ensure_ascii=False) + "\n").encode("utf-8"))

@@ -32,7 +32,7 @@ if __name__ == "__main__":
             with open(tempf, "w") as file:
                 for problem in problems:
                     problem["plus_input"] = plus_input[problem["task_id"]]
-                    file.write(json.dumps(problem) + "\n")
+                    file.write(json.dumps(problem, ensure_ascii=False) + "\n")
 
         # Move to the right place
         os.rename(tempf, args.output)

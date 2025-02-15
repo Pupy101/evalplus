@@ -227,7 +227,7 @@ def script(
 
     with open(output_dataset, "w") as f:
         for item in export_dataset:
-            f.write(json.dumps(item) + "\n")
+            f.write(json.dumps(item, ensure_ascii=False) + "\n")
 
 
 def main():

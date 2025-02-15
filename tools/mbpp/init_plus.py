@@ -193,6 +193,6 @@ if __name__ == "__main__":
 
                 task["base_input"] = mbpp_serialize_inputs(task_id, task["base_input"])
 
-                writer.write(json.dumps(task) + "\n")
+                writer.write(json.dumps(task, ensure_ascii=False) + "\n")
 
         shutil.copy2(tmp_file, MBPP_PLUS_PATH)

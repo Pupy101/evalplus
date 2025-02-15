@@ -187,7 +187,11 @@ def script(sample_dir: str, dataset: str = "humaneval", debug_task: str = None):
             )
         with open("solutions.jsonl", "a+") as f:
             f.write(
-                json.dumps({"task_id": task_id, "solution": correct_solutions}) + "\n"
+                json.dumps(
+                    {"task_id": task_id, "solution": correct_solutions},
+                    ensure_ascii=False,
+                )
+                + "\n"
             )
 
 

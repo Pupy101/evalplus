@@ -362,7 +362,7 @@ def evaluate(
 
     if not os.path.isfile(result_path):
         with open(result_path, "w") as f:
-            json.dump(results, f)
+            json.dump(results, f, ensure_ascii=False)
 
 
 def main():

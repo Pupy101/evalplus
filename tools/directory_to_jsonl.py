@@ -39,7 +39,12 @@ def main(directory, sanitize_code: bool = True):
                         print(code)
                         continue
 
-                f.write(json.dumps({"task_id": task_id, "solution": code}) + "\n")
+                f.write(
+                    json.dumps(
+                        {"task_id": task_id, "solution": code}, ensure_ascii=False
+                    )
+                    + "\n"
+                )
 
 
 if __name__ == "__main__":

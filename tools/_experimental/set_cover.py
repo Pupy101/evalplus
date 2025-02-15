@@ -79,4 +79,4 @@ if __name__ == "__main__":
                 print(task_id, n)
                 d["inputs"].append(new_inputs[task_id][n])
         with open("HumanEvalPlusInputsMin.jsonl", "a") as f:
-            f.write(json.dumps(d) + "\n")
+            f.write(json.dumps(d, ensure_ascii=False) + "\n")

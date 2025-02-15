@@ -83,7 +83,11 @@ def codegen(
                         with open(target_path, "a") as f:
                             f.write(
                                 json.dumps(
-                                    {"task_id": task_id, "solution": sanitized_solution}
+                                    {
+                                        "task_id": task_id,
+                                        "solution": sanitized_solution,
+                                    },
+                                    ensure_ascii=False,
                                 )
                                 + "\n"
                             )
@@ -91,7 +95,10 @@ def codegen(
                         # Writing the raw version
                         with open(raw_target_path, "a") as f:
                             f.write(
-                                json.dumps({"task_id": task_id, "solution": solution})
+                                json.dumps(
+                                    {"task_id": task_id, "solution": solution},
+                                    ensure_ascii=False,
+                                )
                                 + "\n"
                             )
                     else:
@@ -137,7 +144,7 @@ def run_codegen(
     enable_chunked_prefill: bool = False,
     dtype: str = "bfloat16",
     gptqmodel_backend: str = "auto",  # For GPTQModel
-    gguf_file: Optional[str] = None
+    gguf_file: Optional[str] = None,
 ):
     assert dataset in ["humaneval", "mbpp", "evalperf"], f"Invalid dataset {dataset}"
     assert evalperf_type is None or evalperf_type in [

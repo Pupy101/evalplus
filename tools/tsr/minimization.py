@@ -226,7 +226,7 @@ def main(flags):
         with open(
             os.path.join(flags.report_dir, f"report_{flags.model}.json"), "w"
         ) as f:
-            json.dump(final_report, f, indent=4)
+            json.dump(final_report, f, indent=4, ensure_ascii=False)
     else:
         dump_humaneval_plus_mini(merged_set_cover, flags.mini_path)
 

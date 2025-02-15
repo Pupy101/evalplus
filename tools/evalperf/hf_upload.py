@@ -31,7 +31,7 @@ def main(path, overwrite=False):
 
     # convert pe_input into string
     for d in data:
-        d["pe_input"] = json.dumps(d["pe_input"])
+        d["pe_input"] = json.dumps(d["pe_input"], ensure_ascii=False)
         d["entry_point"] = evalplus_datasets[d["task_id"]]["entry_point"]
         d["prompt"] = evalplus_datasets[d["task_id"]]["prompt"]
 

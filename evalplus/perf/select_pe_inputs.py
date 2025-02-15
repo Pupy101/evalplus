@@ -110,7 +110,8 @@ def script(solutions: str, output_profiled_solutions: str, pe_inputs: str = None
                         "pe_input": pe_input,
                         "solutions": solutions[task_id],
                         "counter_profile": solution_costs,
-                    }
+                    },
+                    ensure_ascii=False,
                 )
                 + "\n"
             )

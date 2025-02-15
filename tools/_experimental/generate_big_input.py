@@ -58,7 +58,7 @@ def main():
         with open(
             os.path.join(HUMANEVAL_PLUS_BIG_INPUTS_PATH, f"{filename}.json"), "w"
         ) as f:
-            json.dump(new_input_dict, f)
+            json.dump(new_input_dict, f, ensure_ascii=False)
 
 
 if __name__ == "__main__":

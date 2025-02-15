@@ -62,13 +62,15 @@ def write_jsonl(
                 for x in data:
                     if drop_builtin:
                         x = {k: v for k, v in x.items() if not k.startswith("_")}
-                    gzfp.write((json.dumps(x) + "\n").encode("utf-8"))
+                    gzfp.write(
+                        (json.dumps(x, ensure_ascii=False) + "\n").encode("utf-8")
+                    )
     else:
         with open(filename, mode) as fp:
             for x in data:
                 if drop_builtin:
                     x = {k: v for k, v in x.items() if not k.startswith("_")}
-                fp.write((json.dumps(x) + "\n").encode("utf-8"))
+                fp.write((json.dumps(x, ensure_ascii=False) + "\n").encode("utf-8"))
 
 
 def stream_jsonl(filename: str) -> Iterable[Dict]:

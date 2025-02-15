@@ -155,7 +155,8 @@ def main(
                         "task_id": task_id,
                         "ref_code": item["ref_code"],
                         "synthesizers": responses,
-                    }
+                    },
+                    ensure_ascii=False,
                 )
                 + "\n"
             )

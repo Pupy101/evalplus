@@ -61,7 +61,7 @@ if __name__ == "__main__":
         data = fix(data)
         with open(tgt_file, "wb") as f:
             for x in data:
-                f.write((json.dumps(x) + "\n").encode("utf-8"))
+                f.write((json.dumps(x, ensure_ascii=False) + "\n").encode("utf-8"))
 
     evolve(
         f"HumanEvalPlus-{SOURCE_VERSION}.jsonl", f"HumanEvalPlus-{TARGET_VERSION}.jsonl"

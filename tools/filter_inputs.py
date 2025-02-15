@@ -16,7 +16,7 @@ def execute(code, input_list) -> bool:
 
 def write(new_input_dict):
     with open(new_input_path, "a") as f:
-        f.write(json.dumps(new_input_dict) + "\n")
+        f.write(json.dumps(new_input_dict, ensure_ascii=False) + "\n")
 
 
 if __name__ == "__main__":

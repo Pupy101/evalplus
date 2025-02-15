@@ -130,9 +130,7 @@ def sample_one_input(
                 break
             # hack list integer
             if isinstance(test_input[0], list) and any(
-                not (-(2**63) <= v < 2**63)
-                for v in test_input[0]
-                if isinstance(v, int)
+                not (-(2**63) <= v < 2**63) for v in test_input[0] if isinstance(v, int)
             ):
                 print(colored(f"[INPUT GEN] Int overflow against 64bit", "yellow"))
                 break
@@ -282,7 +280,9 @@ def main(input: str, output: str):
                     results = mbpp_serialize_inputs(task_id, results)
 
                 to_write = {"task_id": item["task_id"], "inputs": results}
-                to_write = (json.dumps(to_write) + "\n").encode("utf-8")
+                to_write = (json.dumps(to_write, ensure_ascii=False) + "\n").encode(
+                    "utf-8"
+                )
 
                 # task_id => list of inputs
                 f.write(to_write)

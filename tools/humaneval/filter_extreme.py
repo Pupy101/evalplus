@@ -59,4 +59,4 @@ if __name__ == "__main__":
     # Save outputs
     with open(f"HumanEvalPlus-NoExtreme-{HUMANEVAL_PLUS_VERSION}.jsonl", "w") as f:
         for task in data.values():
-            f.write(json.dumps(task) + "\n")
+            f.write(json.dumps(task, ensure_ascii=False) + "\n")

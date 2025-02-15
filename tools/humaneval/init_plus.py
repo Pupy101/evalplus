@@ -107,6 +107,6 @@ if __name__ == "__main__":
                 task["atol"] = get_atol(task_id)
                 task["task_id"] = task["task_id"]
 
-                writer.write(json.dumps(task) + "\n")
+                writer.write(json.dumps(task, ensure_ascii=False) + "\n")
         # move tmp_file to HUMANEVAL_PLUS_PATH
         os.rename(tmp_file, HUMANEVAL_PLUS_PATH)
