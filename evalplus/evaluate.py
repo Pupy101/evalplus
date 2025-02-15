@@ -145,11 +145,7 @@ def evaluate(
         os.environ["TOKENIZERS_PARALLELISM"] = os.environ.get(
             "TOKENIZERS_PARALLELISM", "false"
         )
-        samples = run_codegen(
-            dataset=dataset,
-            gguf_file=gguf_file,
-            **model_kwargs,
-        )
+        samples = run_codegen(dataset=dataset, gguf_file=gguf_file, **model_kwargs)
     assert samples is not None, "No samples provided"
 
     n_workers = parallel or max(1, multiprocessing.cpu_count() // 2)
