@@ -1,4 +1,3 @@
-from multiprocessing.pool import ThreadPool
 from typing import List
 
 from evalplus.gen.util import giga_request
@@ -21,8 +20,7 @@ class GigaDecoder(DecoderBase):
             assert batch_size == 1, "Sampling only supports batch size of 1"
 
         outputs = []
-
-        def _request(_) -> str:
+        for _ in range(batch_size):
             message = giga_request.make_auto_request(
                 client=self.client,
                 model=self.name,
@@ -36,14 +34,7 @@ class GigaDecoder(DecoderBase):
                 max_tokens=self.max_new_tokens,
                 temperature=self.temperature,
             )
-            return message["choices"][0]["message"]["content"]
-
-        if batch_size <= 1:
-            return [_request(None)]
-
-        with ThreadPool(processes=batch_size) as pool:
-            outputs = list(pool.map(_request, range(batch_size)))
-
+            outputs.append(message["choices"][0]["message"]["content"])
         return outputs
 
     def is_direct_completion(self) -> bool:
